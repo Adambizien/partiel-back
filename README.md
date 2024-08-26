@@ -40,7 +40,7 @@
   php bin/console make:controller
 ```
 
-### Étape 2 [ici]() : <br>
+### Étape 2 [ici](https://github.com/Adambizien/partiel-back/blob/main/src/EventSubscriber/ExceptionSubscriber.php) : <br>
   - Faire un subscribe pour styliser nos pages d'erreur : <br>
 ```
     php  bin/console make:subscriber
@@ -50,5 +50,5 @@
   - Puis modifier le fichier ExceptionSubscriber.php.<br>
   - Enfin, ajouter le template d'erreur.
   - Si vous modifiez le template d'erreur, supprimez le cache pour que les modifications soient prises en compte (exécutez ``` php bin/console cache:clear ```).
-- Appliquer le style avec boostrap [ici]()
+- Appliquer le style avec boostrap [ici](https://github.com/Adambizien/partiel-back/blob/main/templates/error.html.twig)
     
