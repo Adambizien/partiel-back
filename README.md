@@ -1,5 +1,7 @@
 # Partiel de front pour S2 A2 NWS
 
+### Pour Clone le projet :
+
 ### Étape 1 : <br>
   - Initialisation du projet avec les commandes : <br>
       - Si vous n'avez pas Symfony : <br>
