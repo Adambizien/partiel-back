@@ -73,4 +73,13 @@ Puis on lance le projet :
   - Enfin, ajouter le template d'erreur.
   - Si vous modifiez le template d'erreur, supprimez le cache pour que les modifications soient prises en compte (exécutez ``` php bin/console cache:clear ```).
 - Appliquer le style avec boostrap [ici](https://github.com/Adambizien/partiel-back/blob/main/templates/error.html.twig)
+
+### Étape 3
+
+on a creer les entiter avec : 
+
+ ```
+      php bin/console make:entity
+      php bin/console doctrine:schema:update --force
+    ```
     
