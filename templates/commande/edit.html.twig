@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Commande{% endblock %}
+
+{% block body %}
+    <div class="container my-5">
+          <div class="row mb-4">
+            <div class="col-12">
+                <a href="{{ path('app_commande_index') }}" class="btn btn-secondary">
+                    &larr; Retour à la liste
+                </a>
+            </div>
+        </div>
+
+        <h1 class="text-center mb-4">Modifier Commande</h1>
+         <div class="row justify-content-center">
+            <div class="col-md-8">
+                {% if error is not empty %}
+                    <div class="alert alert-danger">{{ error}}</div>
+                {% endif %}
+                {{ form_start(form, {'attr': {'class': 'form'}}) }}
+
+                <div class="mb-3">
+                    {{ form_label(form.client, null, {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.client, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.client) }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form_label(form.materiels, null, {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.materiels, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.materiels) }}
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

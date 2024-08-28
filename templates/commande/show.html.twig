@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande{% endblock %}
+
+{% block body %}
+    <div class="container my-5">
+        <div class="row mb-4">
+            <div class="col-12">
+                <a href="{{ path('app_commande_index') }}" class="btn btn-secondary">
+                    &larr; Retour à la liste
+                </a>
+            </div>
+        </div>
+
+        <h1 class="text-center mb-4">Détails de la Commande</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Id</th>
+                            <td>{{ commande.id }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Client</th>
+                            <td>{{ commande.client }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Matériels</th>
+                            <td>
+                                {{ commande.materiels|length }} matériel(s) trouvé(s)
+                                <ul>
+                                    {% if commande.materiels is not empty %}
+                                        {% for materiel in commande.materiels %}
+                                            <li>{{ materiel.nom }}</li>
+                                        {% endfor %}
+                                    {% else %}
+                                        Aucun matériel trouvé
+                                    {% endif %}
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Prix Total</th>
+                            <td>{{ commande.prix }} €</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

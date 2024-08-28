@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Materiel{% endblock %}
+
+{% block body %}
+    <div class="container my-5">
+        <div class="row mb-4">
+            <div class="col-12">
+                <a href="{{ path('app_materiel_index') }}" class="btn btn-secondary">
+                    &larr; Retour à la liste
+                </a>
+            </div>
+        </div>
+
+        <h1 class="text-center mb-4">Détails du Materiel</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Id</th>
+                            <td>{{ materiel.id }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Nom</th>
+                            <td>{{ materiel.nom }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Quantité</th>
+                            <td>{{ materiel.quantite }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Prix</th>
+                            <td>{{ materiel.prix }} €</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
