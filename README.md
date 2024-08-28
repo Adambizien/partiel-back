@@ -16,6 +16,11 @@ Puis créer tout la database :
     php bin/console doctrine:database:create
     php bin/console doctrine:schema:update --force
 ```
+Puis on lance le projet : 
+
+```
+    symfony server:start
+```
 
 ### Étape 1 : <br>
   - Initialisation du projet avec les commandes : <br>
