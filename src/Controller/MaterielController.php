@@ -50,22 +50,33 @@ class MaterielController extends AbstractController
     }
 
     #[Route('/materiel/{id}/edit', name: 'app_materiel_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Materiel $materiel, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(MaterielType::class, $materiel);
-        $form->handleRequest($request);
+public function edit(Request $request, Materiel $materiel, EntityManagerInterface $entityManager): Response
+{
+    $prixOriginal = $materiel->getPrix();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+    $form = $this->createForm(MaterielType::class, $materiel);
+    $form->handleRequest($request);
 
-            return $this->redirectToRoute('app_materiel_index', [], Response::HTTP_SEE_OTHER);
+    if ($form->isSubmitted() && $form->isValid()) {
+        if ($materiel->getPrix() !== $prixOriginal) {
+            $commandes = $materiel->getCommandes();
+
+            foreach ($commandes as $commande) {
+                $nouveauPrixTotal = $commande->getPrix() - $prixOriginal + $materiel->getPrix();
+                $commande->setPrix($nouveauPrixTotal);
+                $entityManager->persist($commande);
+            }
         }
+        $entityManager->flush();
 
-        return $this->render('materiel/edit.html.twig', [
-            'materiel' => $materiel,
-            'form' => $form,
-        ]);
+        return $this->redirectToRoute('app_materiel_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    return $this->render('materiel/edit.html.twig', [
+        'materiel' => $materiel,
+        'form' => $form,
+    ]);
+}
 
     #[Route('/materiel/{id}', name: 'app_materiel_delete', methods: ['POST'])]
     public function delete(Request $request, Materiel $materiel, EntityManagerInterface $entityManager): Response

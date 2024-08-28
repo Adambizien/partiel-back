@@ -19,7 +19,7 @@ class Commande
     private ?string $client = null;
 
     #[ORM\Column]
-    private ?int $prix = null;
+    private ?float $prix = null;
 
     /**
      * @var Collection<int, Materiel>
