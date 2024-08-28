@@ -2,6 +2,26 @@
 
 ### Pour Clone le projet :
 
+```
+    git clone https://github.com/Adambizien/partiel-back.git
+    cd partiel-back/
+    composer install
+```
+il faut ensuite ajouter la database dans le .env :
+```
+  DATABASE_URL="mysql://auth:password@127.0.0.1:3306/partiel-back?charset=utf8mb4"
+```
+Puis créer tout la database : 
+```
+    php bin/console doctrine:database:create
+    php bin/console doctrine:schema:update --force
+```
+Puis on lance le projet : 
+
+```
+    symfony server:start
+```
+
 ### Étape 1 : <br>
   - Initialisation du projet avec les commandes : <br>
       - Si vous n'avez pas Symfony : <br>
