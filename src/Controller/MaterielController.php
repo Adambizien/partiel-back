@@ -71,6 +71,13 @@ class MaterielController extends AbstractController
     public function delete(Request $request, Materiel $materiel, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$materiel->getId(), $request->getPayload()->getString('_token'))) {
+            $commandes = $materiel->getCommandes();
+            foreach ($commandes as $commande) {
+                $nouveauPrixTotal = $commande->getPrix() - $materiel->getPrix();
+                $commande->setPrix($nouveauPrixTotal);
+                $entityManager->persist($commande);
+            }
+            $entityManager->flush();
             $entityManager->remove($materiel);
             $entityManager->flush();
         }
