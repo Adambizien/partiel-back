@@ -64,33 +64,6 @@ class CommandeController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_commande_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Commande $commande, EntityManagerInterface $entityManager,CommandeRepository $commandeRepository): Response
-    {
-        $form = $this->createForm(CommandeType::class, $commande);
-        $form->handleRequest($request);
-        $total = 0;
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            foreach ($commande->getMateriels() as $materiel) {
-                $total += $materiel->getPrix();
-                    
-
-                
-            }
-
-            $commande->setPrix($total);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_commande_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('commande/edit.html.twig', [
-            'commande' => $commande,
-            'form' => $form->createView(),
-            'error' => $request->get('error'),
-        ]);
-    }
 
     #[Route('/{id}', name: 'app_commande_delete', methods: ['POST'])]
     public function delete(Request $request, Commande $commande, EntityManagerInterface $entityManager): Response

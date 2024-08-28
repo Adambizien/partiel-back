@@ -30,7 +30,6 @@
                                 <td>{{ commande.prix }} €</td>
                                 <td>
                                     <a href="{{ path('app_commande_show', {'id': commande.id}) }}" class="btn btn-sm btn-primary">Details</a>
-                                    <a href="{{ path('app_commande_edit', {'id': commande.id}) }}" class="btn btn-sm btn-warning">Modifier</a>
                                     {{ include('commande/_delete_form.html.twig') }}
                                 </td>
                             </tr>
